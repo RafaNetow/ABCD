@@ -59,10 +59,9 @@ function ClippedDrawer() {
           <div className={classes.toolbar} />
           <List>
               <ListItem button key="test">
-                <ListItemIcon> <InboxIcon /></ListItemIcon>
+              
                 <ListItemText primary="Ficha" />
-              </ListItem>
-           
+              </ListItem>        
           </List>
           <Divider />
         </Drawer>
