@@ -1,11 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './styles/logo.css';
-import StudentInformation from '../components/Ficha'
-import { mainComponents } from './data/static/Maincomponents'
-  
-
+import { mainComponents } from '../data/static/MainComponent'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import Ficha from './StudentInformation/Ficha'
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -112,7 +110,7 @@ class App extends React.Component {
             minHeight: 500,
           }}
         >
-          Content
+         <Ficha/>
         </Content>
       </Layout>
     </Layout>
