@@ -7,7 +7,9 @@ import {
   Button,
   Row,
   AutoComplete,
-  DatePicker
+  DatePicker,
+  Radio,
+  Checkbox
 } from "antd";
 const { Option } = Select;
 
@@ -111,6 +113,63 @@ class StudenInformation extends React.Component {
             </Form.Item>
           </Col>
         </Row>
+        <Row>Datos Academicos</Row>
+        <Row><Col span={8}>
+            <Form.Item label="Instituto anterior" hasFeedback>
+              {getFieldDecorator("Instituto anterior", {
+                rules: [{ required: true, message: "Seleccione el instituto" }]
+              })(
+                <Select placeholder="Seleccione el instituto">
+                  <Option value="instituto1">instituto 1</Option>
+                </Select>
+              )}
+            </Form.Item>
+            </Col>
+            <Col span={8}> 
+        <Form.Item label="De donde proviene">
+          {getFieldDecorator('radio-group')(
+            <Radio.Group>
+              <Radio value="repite">repite</Radio>
+              <Radio value="traslado">viene de traslado</Radio>
+              <Radio value="desertor">desertor</Radio>
+            </Radio.Group>,
+          )}
+        </Form.Item>
+        </Col>
+        </Row>
+  
+         
+        <Form.Item label="Documentos que presentan">
+          {getFieldDecorator('checkbox-group', {
+          })(
+            <Checkbox.Group style={{ width: '100%' }}>
+              <Row>
+                <Col span={8}>
+                  <Checkbox value="A">Certificado de sexto Grado</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox disabled value="B">
+                    Tarjeta de Salud
+                  </Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="C">Partida de nacimiento</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="D">Certificacion de estudio</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="E">Fotografia</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="E">Otros documentos</Checkbox>
+                </Col>
+                
+              </Row>
+            </Checkbox.Group>,
+          )}
+        </Form.Item>
+          
       </Form>
     );
   }
