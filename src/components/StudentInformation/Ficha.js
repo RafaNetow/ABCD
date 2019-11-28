@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import TextFieldPru from './GeneralTextField/Textfields'
 import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 
 const styles = theme => ({
@@ -164,6 +164,7 @@ class General extends React.Component {
             <TextFieldPru value={telefono} onChange={this.handleChangeTelefono} label='telefono' />
             <TextFieldPru value={genero} onChange={this.handleChangeGenero} label='genero' />
             <TextFieldPru value={tipoSangre} onChange={this.handleChangeTipoDeSangre} label='tipoSangre' />
+            <Button variant="contained" color="primary">Send</Button>
           </Grid>
         </CardContent>
       </Card>
