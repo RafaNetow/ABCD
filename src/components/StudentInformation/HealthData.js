@@ -31,67 +31,51 @@ const styles = theme => ({
   }
 })
 
-class General extends React.Component {
+class HealhData extends React.Component {
   constructor () {
     super() 
     this.state = {
-      encargado: '',
-      casaPropia: Boolean,
-      lugarDeTrabajo: '',
-      telefono: ''
+      enfermedadesPadecidas: '',
+      todasLasVacunas: Boolean,
+      EnfermadesActuales: ''
     }
-    this.handleChangeEncargado = this.handleChangeEncargado.bind(this)
-    this.handleChangeCasaPropia = this.handleChangeCasaPropia.bind(this)
-    this.handleChangeLugarDeTrabajo= this.handleChangeLugarDeTrabajo.bind(this)
-    this.handleChangeTelefono = this.handleChangeTelefono.bind(this)
+    this.handleChangeEnfermedadesPadecidas = this.handleChangeEnfermedadesPadecidas.bind(this)
+    this.handleChangetTodasLasVacunas = this.handleChangetTodasLasVacunas.bind(this)
+    this.handlerChangeEnfermedadesActuales= this.handlerChangeEnfermedadesActuales.bind(this)
   }
   
-  handleLugarDeNacimiento(event) {
+  handleChangeEnfermedadesPadecidas(event) {
     const { target: { name, value } } = event;
     console.log(name,  value)
-    this.setState({encargado:value});
+    this.setState({enfermedadesPadecidas:value});
   }
   
-  handleChangeTelefono(event) {
+  handleChangetTodasLasVacunas(event) {
     const { target: { name, value } } = event;
     console.log(name,  value)
-    this.setState({casaPropia:value});
+    this.setState({todasLasVacunas:value});
   }
-  handleChangeTipoDeSangre(event) {
+  handlerChangeEnfermedadesActuales(event) {
     const { target: { name, value } } = event;
     console.log(name,  value)
-    this.setState({lugarDeTrabajo:value});
+    this.setState({EnfermadesActuales:value});
   }
   
-  handleChangeDireccion(event) {
-    const { target: { name, value } } = event;
-    console.log(name,  value)
-    this.setState({telefono:value});
-  }
-
   
   render () {
     const {
-      encargado,
-      casaPropia,
-      lugarDeTrabajo,
-      telefono
+        enfermedadesPadecidas,
+        todasLasVacunas,
+        EnfermadesActuales
     } = this.state
     return (
       <Card style={styles.card}>
         <CardContent>
           <Typography variant='h4'>Fichas</Typography>
           <Grid container>
-            <TextFieldPru
-              value={numAccount}
-              label='numero de cuenta'
-              onChange={this.handleChangeNC}
-            />
-            <TextFieldPru value={RNE} label='Identidad' onChange={this.handleChangeRNE} />
-            <TextFieldPru value={nombre} label='nombre' onChange={this.handleChangeNombre} />
-            <TextFieldPru value={apellido} label='apellido' onChange={this.handleChangeApellido} />
-            <TextFieldPru value={lugarNacimiento} label='lugar de nacimiento'  onChange={this.handleLugarDeNacimiento}/>
-
+            <TextFieldPru value={enfermedadesPadecidas} label='enfermeaddes padecidas' onChange={this.handleChangeEnfermedadesPadecidas} />
+            <TextFieldPru value={todasLasVacunas} label='vacunas' onChange={this.handleChangetTodasLasVacunas} />
+            <TextFieldPru value={EnfermadesActuales} label='enfermedades actuales' onChange={this.handlerChangeEnfermedadesActuales} />
             <Button variant="contained" color="primary">Send</Button>
           </Grid>
         </CardContent>
@@ -100,4 +84,4 @@ class General extends React.Component {
   }
 }
 
-export default General
+export default HealhData
