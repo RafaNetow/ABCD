@@ -1,181 +1,79 @@
-import React from "react";
-import {
-  Select,
-  Form,
-  Col,
-  Input,
-  Button,
-  Row,
-  AutoComplete,
-  DatePicker,
-  Radio,
-  Checkbox
-} from "antd";
-const { Option } = Select;
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent'
+import TextFieldPru from './GeneralTextField/Textfields'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 
-class StudenInformation extends React.Component {
-  render() {
-    const requireRule = {
-      rules: [
-        {
-          required: true,
-          message: "Este campo es requerido"
-        }
-      ]
+
+const styles = theme => ({
+	card: {
+		margin: '1em auto',
+	},
+	media: {
+		height: 140,
+		width: '100%',
+	},
+	container: {
+		display: 'flex',
+		flexWrap: 'wrap',
+	},
+	textField: {
+		marginLeft: theme.spacing.unit,
+		marginRight: theme.spacing.unit,
+	},
+	dense: {
+		marginTop: 16,
+	},
+	menu: {
+		width: 200,
+	},
+})
+
+class General extends React.Component {
+
+    state = {
+        numAccount:0,
+        RNE:0,
+        nombre : '',
+        apellido : '',
+        lugarDeNacimiento : '',
+        edad : '',
+        genero : '',
+        nacionalidad : '',
+        direccion : '',
+        telefono : '',
+        tipoSangre : ''
     };
-    const dateTimePickerRule = {
-      rules: [
-        { type: "object", required: true, message: "Seleccione la fecha" }
-      ]
-    };
-    const { getFieldDecorator } = this.props.form;
-    return (
-      <Form>
-        <Row>
-          <Col span={8}>
-            <Form.Item label="No Cuenta">
-              {getFieldDecorator("num_cuenta", requireRule)(
-                <AutoComplete placeholder="website">
-                  <Input />
-                </AutoComplete>
-              )}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item label="Anio de matricula">
-              {getFieldDecorator("Anio de matricula", requireRule)(<Input />)}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item label="RNE">
-              {getFieldDecorator("rne", requireRule)(<Input />)}
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={8}>
-            <Form.Item label="Nombres">
-              {getFieldDecorator("nombres", requireRule)(<Input />)}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item label="Apellidos">
-              {getFieldDecorator("Apellidos", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Este campo es requerido"
-                  }
-                ]
-              })(<Input />)}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item label="Fecha de nacimiento">
-              {getFieldDecorator("date-picker", dateTimePickerRule)(
-                <DatePicker />
-              )}
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={8}>
-            <Form.Item label="Curso" hasFeedback>
-              {getFieldDecorator("curso", {
-                rules: [{ required: true, message: "Seleccione una modalidad" }]
-              })(
-                <Select placeholder="Selecione el curso">
-                  <Option value="curso1">Curso 1</Option>
-                </Select>
-              )}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item label="Modalidad" hasFeedback>
-              {getFieldDecorator("Modalidad", {
-                rules: [{ required: true, message: "Seleccione una modalidad" }]
-              })(
-                <Select placeholder="Selecione una modalidad">
-                  <Option value="modalidad1">Modalidad 1</Option>
-                </Select>
-              )}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item label="Seccion" hasFeedback>
-              {getFieldDecorator("Seccion", {
-                rules: [{ required: true, message: "Seleccione una seccion" }]
-              })(
-                <Select placeholder="Selecione una seccion">
-                  <Option value="seccion1">Seccion 1</Option>
-                </Select>
-              )}
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>Datos Academicos</Row>
-        <Row><Col span={8}>
-            <Form.Item label="Instituto anterior" hasFeedback>
-              {getFieldDecorator("Instituto anterior", {
-                rules: [{ required: true, message: "Seleccione el instituto" }]
-              })(
-                <Select placeholder="Seleccione el instituto">
-                  <Option value="instituto1">instituto 1</Option>
-                </Select>
-              )}
-            </Form.Item>
-            </Col>
-            <Col span={8}> 
-        <Form.Item label="De donde proviene">
-          {getFieldDecorator('radio-group')(
-            <Radio.Group>
-              <Radio value="repite">repite</Radio>
-              <Radio value="traslado">viene de traslado</Radio>
-              <Radio value="desertor">desertor</Radio>
-            </Radio.Group>,
-          )}
-        </Form.Item>
-        </Col>
-        </Row>
-  
-         
-        <Form.Item label="Documentos que presentan">
-          {getFieldDecorator('checkbox-group', {
-          })(
-            <Checkbox.Group style={{ width: '100%' }}>
-              <Row>
-                <Col span={8}>
-                  <Checkbox value="A">Certificado de sexto Grado</Checkbox>
-                </Col>
-                <Col span={8}>
-                  <Checkbox disabled value="B">
-                    Tarjeta de Salud
-                  </Checkbox>
-                </Col>
-                <Col span={8}>
-                  <Checkbox value="C">Partida de nacimiento</Checkbox>
-                </Col>
-                <Col span={8}>
-                  <Checkbox value="D">Certificacion de estudio</Checkbox>
-                </Col>
-                <Col span={8}>
-                  <Checkbox value="E">Fotografia</Checkbox>
-                </Col>
-                <Col span={8}>
-                  <Checkbox value="E">Otros documentos</Checkbox>
-                </Col>
                 
-              </Row>
-            </Checkbox.Group>,
-          )}
-        </Form.Item>
-          
-      </Form>
-    );
-  }
+    render () {
+      
+        const { numAccount, RNE, nombre, apellido, lugarNacimiento,fechaNacimiento, edad, genero, nacionalidad, direccion, telefono,
+             tipoSangre } =  this.state;
+    return (
+       
+
+        <Card style={styles.card}>
+        <CardContent>
+            <Typography variant="h4" >Fichas</Typography>
+            <Grid container>
+                <TextFieldPru value={numAccount} label='numero de cuenta' />
+                <TextFieldPru value={RNE}  label='Identidad' />
+                <TextFieldPru value={nombre} label= 'nombre' />
+                <TextFieldPru value={apellido}  label='apellido' />
+                <TextFieldPru value={lugarNacimiento}  label= 'lugar de nacimiento' />
+                <TextFieldPru value={fechaNacimiento} type="date"  label='fecha de nacimiento' />
+                <TextFieldPru value={nacionalidad} />
+                <TextFieldPru value={direccion}  />
+                <TextFieldPru value={telefono} />          
+            </Grid>
+        </CardContent>
+    </Card>
+        
+    )
+    }
 }
 
-const StudenInformationForm = Form.create({ name: "register" })(
-  StudenInformation
-);
-export default StudenInformationForm;
+
+export default General;

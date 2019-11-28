@@ -1,20 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './styles/logo.css';
-import { mainComponents } from '../data/static/MainComponent'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import Ficha from './StudentInformation/Ficha'
+import GeneralInformation from './StudentInformation/StudenInformation'
+import {mainComponents} from '../data/static/MainComponent';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-
-/*import './App.css';
-/*
-import ButtonAppBar from './components/Menu'
-import General from './components/StudentInformation/General'
-import HomePage from './components/HomePage'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import PageNotFound from "./PageNotFound";*/
 class App extends React.Component {
   constructor() {
     super();
@@ -25,11 +17,12 @@ class App extends React.Component {
   }
   
   changeCurrentMainComponent(currentComponent) {
-     return (
-       <div> 
-          {mainComponents[currentComponent]}
-       </div>
-     )
+    let newComponent = currentComponent.key;
+    console.log(this.state);
+    console.log(currentComponent.key)
+    console.log("...")
+    this.setState({currentMainComponent: newComponent})
+     
   }
   render() {
   return (
@@ -64,8 +57,8 @@ class App extends React.Component {
             }
           >
             <Menu.Item key="1"><Icon type="unordered-list" />List</Menu.Item>
-            <Menu.Item key="nueva_matricula"><Icon type="file-add" />Nueva matricula</Menu.Item>
-            <Menu.Item key="3"><Icon type="file-add" />Nueva Ficha</Menu.Item>
+            <Menu.Item onClick={this.changeCurrentMainComponent}  key="generalInformation" ><Icon type="file-add"/>Nueva matricula</Menu.Item>
+            <Menu.Item  onClick={this.changeCurrentMainComponent} key="ficha"><Icon type="file-add" />Nueva Ficha</Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -110,7 +103,8 @@ class App extends React.Component {
             minHeight: 500,
           }}
         >
-         <Ficha/>
+          {mainComponents[this.state.currentMainComponent]}
+     
         </Content>
       </Layout>
     </Layout>
