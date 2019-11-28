@@ -46,6 +46,12 @@ class General extends React.Component {
         telefono : '',
         tipoSangre : ''
     };
+
+    handleChangeNC(event) {
+        console.log(event);
+    }
+    
+    
                 
     render () {
       
@@ -58,15 +64,15 @@ class General extends React.Component {
         <CardContent>
             <Typography variant="h4" >Fichas</Typography>
             <Grid container>
-                <TextFieldPru value={numAccount} label='numero de cuenta' />
+                <TextFieldPru value={numAccount} label='numero de cuenta' onChange={this.handleChange.bind(this)} />
                 <TextFieldPru value={RNE}  label='Identidad' />
                 <TextFieldPru value={nombre} label= 'nombre' />
                 <TextFieldPru value={apellido}  label='apellido' />
                 <TextFieldPru value={lugarNacimiento}  label= 'lugar de nacimiento' />
                 <TextFieldPru value={fechaNacimiento} type="date"  label='fecha de nacimiento' />
-                <TextFieldPru value={nacionalidad} />
-                <TextFieldPru value={direccion}  />
-                <TextFieldPru value={telefono} />          
+                <TextFieldPru value={nacionalidad} label='nacionalidad' />
+                <TextFieldPru value={direccion} label='direccion' />
+                <TextFieldPru value={telefono} label='telefono'/>          
             </Grid>
         </CardContent>
     </Card>
