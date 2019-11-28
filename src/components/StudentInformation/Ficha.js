@@ -40,7 +40,6 @@ class General extends React.Component {
       nombre: '',
       apellido: '',
       lugarDeNacimiento: '',
-      edad: '',
       genero: '',
       nacionalidad: '',
       direccion: '',
@@ -52,12 +51,18 @@ class General extends React.Component {
     this.handleChangeNombre= this.handleChangeNombre.bind(this)
     this.handleChangeApellido = this.handleChangeApellido.bind(this)
     this.handleLugarDeNacimiento = this.handleLugarDeNacimiento.bind(this)
-    this.handleChangeEdad = this.handleChangeEdad.bind(this)
+    this.handleChangeFechaDeNacimiento = this.handleChangeFechaDeNacimiento.bind(this)
     this.handleChangeGenero = this.handleChangeGenero.bind(this)
     this.handleChangeNacionalidad = this.handleChangeNacionalidad.bind(this)
-    this.handleChangeDireccion= this.handleChangeNC.bind(this)
+    this.handleChangeDireccion= this.handleChangeDireccion.bind(this)
     this.handleChangeTelefono = this.handleChangeTelefono.bind(this)
     this.handleChangeTipoDeSangre = this.handleChangeTipoDeSangre.bind(this)
+  }
+  
+  handleLugarDeNacimiento(event) {
+    const { target: { name, value } } = event;
+    console.log(name,  value)
+    this.setState({lugarDeNacimiento:value});
   }
   
   handleChangeTelefono(event) {
@@ -101,16 +106,11 @@ class General extends React.Component {
     this.setState({apellido:value});
   }
 
-  handleLugarDeNacimiento(event) {
-    const { target: { name, value } } = event;
-    console.log(name,  value)
-    this.setState({lugarDeNacimiento:value});
-  }
 
-  handleChangeEdad (event) {
+  handleChangeFechaDeNacimiento (event) {
     const { target: { name, value } } = event;
     console.log(name,  value)
-    this.setState({edad:value});
+    this.setState({fechaNacimiento:value});
   }
 
   handleChangeGenero (event) {
@@ -133,7 +133,6 @@ class General extends React.Component {
       apellido,
       lugarNacimiento,
       fechaNacimiento,
-      edad,
       genero,
       nacionalidad,
       direccion,
@@ -148,21 +147,23 @@ class General extends React.Component {
             <TextFieldPru
               value={numAccount}
               label='numero de cuenta'
-              
               onChange={this.handleChangeNC}
             />
-            <TextFieldPru value={RNE} label='Identidad' />
-            <TextFieldPru value={nombre} label='nombre' />
-            <TextFieldPru value={apellido} label='apellido' />
-            <TextFieldPru value={lugarNacimiento} label='lugar de nacimiento' />
+            <TextFieldPru value={RNE} label='Identidad' onChange={this.handleChangeRNE} />
+            <TextFieldPru value={nombre} label='nombre' onChange={this.handleChangeNombre} />
+            <TextFieldPru value={apellido} label='apellido' onChange={this.handleChangeApellido} />
+            <TextFieldPru value={lugarNacimiento} label='lugar de nacimiento'  onChange={this.handleLugarDeNacimiento}/>
             <TextFieldPru
               value={fechaNacimiento}
               type='date'
               label='fecha de nacimiento'
+              onChange={this.handleChangeFechaDeNacimiento}
             />
-            <TextFieldPru value={nacionalidad} label='nacionalidad' />
-            <TextFieldPru value={direccion} label='direccion' />
-            <TextFieldPru value={telefono} label='telefono' />
+            <TextFieldPru value={nacionalidad} onChange={this.handleChangeNacionalidad} label='nacionalidad' />
+            <TextFieldPru value={direccion} onChange={this.handleChangeDireccion} label='direccion' />
+            <TextFieldPru value={telefono} onChange={this.handleChangeTelefono} label='telefono' />
+            <TextFieldPru value={genero} onChange={this.handleChangeGenero} label='genero' />
+            <TextFieldPru value={tipoSangre} onChange={this.handleChangeTipoDeSangre} label='tipoSangre' />
           </Grid>
         </CardContent>
       </Card>
