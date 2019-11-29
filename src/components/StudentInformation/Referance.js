@@ -80,7 +80,7 @@ class Referance extends React.Component {
     return (
       <Card style={styles.card}>
         <CardContent>
-          <Typography variant='h4'>Fichas</Typography>
+          <Typography variant='h4'>Rerencia</Typography>
           <Grid container>
             <TextFieldPru value={encargado} label='Identidad' onChange={this.handleChangeEncargado} />
             <TextFieldPru value={casaPropia} label='nombre' onChange={this.handleChangeCasaPropia} />

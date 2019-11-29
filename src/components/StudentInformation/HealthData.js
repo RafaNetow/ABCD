@@ -71,12 +71,11 @@ class HealhData extends React.Component {
     return (
       <Card style={styles.card}>
         <CardContent>
-          <Typography variant='h4'>Fichas</Typography>
+          <Typography variant='h4'>Informacion de salud</Typography>
           <Grid container>
             <TextFieldPru value={enfermedadesPadecidas} label='enfermeaddes padecidas' onChange={this.handleChangeEnfermedadesPadecidas} />
             <TextFieldPru value={todasLasVacunas} label='vacunas' onChange={this.handleChangetTodasLasVacunas} />
             <TextFieldPru value={EnfermadesActuales} label='enfermedades actuales' onChange={this.handlerChangeEnfermedadesActuales} />
-            <Button variant="contained" color="primary">Send</Button>
           </Grid>
         </CardContent>
       </Card>

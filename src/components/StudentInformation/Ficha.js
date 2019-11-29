@@ -5,6 +5,10 @@ import CardContent from '@material-ui/core/CardContent'
 import TextFieldPru from './GeneralTextField/Textfields'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import HealthData from './HealthData'
+import Reference from './Referance'
+
+
 
 
 const styles = theme => ({
@@ -142,7 +146,7 @@ class General extends React.Component {
     return (
       <Card style={styles.card}>
         <CardContent>
-          <Typography variant='h4'>Fichas</Typography>
+          <Typography variant='h4'>Ficha</Typography>
           <Grid container>
             <TextFieldPru
               value={numAccount}
@@ -167,8 +171,12 @@ class General extends React.Component {
             <Button variant="contained" color="primary">Send</Button>
           </Grid>
         </CardContent>
+        <HealthData/>
+        <Reference/>
       </Card>
+     
     )
+
   }
 }
 
