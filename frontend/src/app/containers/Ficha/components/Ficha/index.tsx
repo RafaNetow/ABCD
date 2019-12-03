@@ -38,12 +38,12 @@ const styles = (theme: { spacing: { unit: any; }; }) => ({
     width: 200
   }
 })
-
+export namespace AddFicha{
 export interface Props extends RouteComponentProps <void>  {
   employess:FichaModel[];
   actions:FichasActions;
 }
-class Ficha extends React.Component {
+class Ficha extends Component {
   constructor () {
     super() 
     this.state = {
@@ -196,4 +196,6 @@ const mapDispatchToProps = dispatch => {
     setIdentityAction
   }
 }
-export default connect()(Ficha)
+
+
+}
