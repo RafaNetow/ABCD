@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import HealthData from './HealthData'
 import Reference from './Referance'
+import { connect } from 'react-redux'
+import {setIdentityAction} from '../../redux/actions/fichaActions'
 
 
 
@@ -35,7 +37,7 @@ const styles = theme => ({
   }
 })
 
-class General extends React.Component {
+class Ficha extends React.Component {
   constructor () {
     super() 
     this.state = {
@@ -168,16 +170,24 @@ class General extends React.Component {
             <TextFieldPru value={telefono} onChange={this.handleChangeTelefono} label='telefono' />
             <TextFieldPru value={genero} onChange={this.handleChangeGenero} label='genero' />
             <TextFieldPru value={tipoSangre} onChange={this.handleChangeTipoDeSangre} label='tipoSangre' />
-            <Button variant="contained" color="primary">Send</Button>
           </Grid>
         </CardContent>
         <HealthData/>
         <Reference/>
+        <Button>Guardar</Button>
       </Card>
      
     )
 
   }
 }
+const mapStateToProps = (state, ownProps) => ({
+ 
+})
 
-export default General
+const mapDispatchToProps = dispatch => {
+  return {
+    setIdentityAction
+  }
+}
+export default connect()(Ficha)

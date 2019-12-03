@@ -1,0 +1,4 @@
+export const ADD_FICHA = 'ADD_FICHA';
+export const ADD_HEALT = 'ADD_HEALT';
+export const ADD_REFERENCE = 'ADD_REFERENCE';
+export const SET_IDENTITY_NUMBER = 'SET_IDENTITY_NUMBER';

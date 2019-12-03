@@ -1,15 +1,13 @@
-import { ADD_FICHA } from '../actions/ActionTypes'
+import { SET_IDENTITY_NUMBER } from '../actions/ActionTypes'
 import { handlerActions } from 'redux-actions';
 
-const defaultState = [];
-
-
+const defaultState = {};
 
 const fichaReducers = handlerActions(
     {
-        [ADD_FICHA]: (state, {playload}) => {
-            const infoFicha = playload;
-            return [...state, ...infoFicha]
+        [SET_IDENTITY_NUMBER]: (state, {playload}) => {
+            const numAccount = playload;
+            return [...state, ...numAccount]
         }
     },
     defaultState

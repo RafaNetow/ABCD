@@ -87,7 +87,6 @@ class Referance extends React.Component {
             <TextFieldPru value={lugarDeTrabajo} label='apellido' onChange={this.handleChangeLugarDeTrabajo} />
             <TextFieldPru value={telefono} label='lugar de nacimiento'  onChange={this.handleChangeTelefono}/>
 
-            <Button variant="contained" color="primary">Send</Button>
           </Grid>
         </CardContent>
       </Card>
