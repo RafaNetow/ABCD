@@ -1,8 +1,9 @@
 import { RouterState } from 'react-router-redux';
-import { EmployeeState } from 'app/containers/Employee/reducer/state';
+import { FichaState } from 'app/containers/Ficha/reducer/state'
+
 export interface RootState {
   router: RouterState;
-  employees: EmployeeState;
+  fichas: FichaState;
 }
 
 export interface SortedColumn {

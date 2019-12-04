@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 
-class TextFieldPrue extends React.Component {
+type textProps = {
+	value:any,
+	label:string,
+	onChange:any
+	type? :any
+}
+
+
+class TextFieldPrue extends Component<textProps>  {
 	render () {
 		return (
 			<Grid item xs={3}>
@@ -12,4 +20,4 @@ class TextFieldPrue extends React.Component {
 	}
 }
 
-export default TextFieldPrue   s\
+export default TextFieldPrue   

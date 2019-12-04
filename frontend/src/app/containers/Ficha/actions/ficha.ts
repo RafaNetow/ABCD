@@ -98,11 +98,11 @@ export namespace FichaActions {
     };
   };
 
-  
+}
 
 
 export type FichaActions = Omit<typeof FichaActions, 'Type'>;
 export interface AddFichaPayload {
   FICHA: FichaModel;
 }
-}
+
