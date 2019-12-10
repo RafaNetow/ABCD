@@ -3,7 +3,7 @@ import { FichaState } from 'app/containers/Ficha/reducer/state'
 
 export interface RootState {
   router: RouterState;
-  fichas: FichaState;
+  ficha: FichaState;
 }
 
 export interface SortedColumn {

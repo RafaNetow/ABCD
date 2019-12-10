@@ -7,13 +7,11 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import HealthData from '../HealhData'
 import Reference from '../Reference'
-import { RouteComponentProps } from 'react-router'
 import {FichaModel} from '../../models/FichaModel'
-import {FichaActions} from '../../actions'
 import {Dispatch, bindActionCreators} from 'redux'
-import {FichaState} from '../../reducer/state'
-import {omit, confirmDialog} from 'app/utils'
 import {connect} from 'react-redux'
+import { RootState } from 'app/reducers/state'
+import { thunkCreateFicha } from '../../store/thunk'
 
 
  
@@ -43,77 +41,35 @@ const styles = (theme: { spacing: { unit: any; }; }) => {
     }
   });
 }*/
-export namespace AddFicha {
+// export namespace AddFicha {
 
-  export interface Props extends RouteComponentProps <void>  {
-    fichas:FichaModel[];
-    actions:FichaActions;
+   interface StateProps {
+    ficha:FichaModel;
     isFetching:boolean;
     errorMessage:string;
-    searchText:string;
   }
 
-  export interface State {
-    numAccount:string,
-    RNE:string,
-    nombre: string,
-    apellido:string,
-    lugarDeNacimiento:string,
-    genero:string,
-    nacionalidad:string,
-    direccion:string,
-    telefono:string,
-    tipoSangre:string,
-    fechaNacimiento: Date
-  }
+   interface ActionsProps {
+   // actions:FichaActions;
+     createFicha:typeof thunkCreateFicha
+   }
 
-class AddFicha extends Component<AddFicha.Props> {
-    state: AddFicha.State
-    constructor(props: AddFicha.Props, context? : any) {
-      super(props, context);
+   export interface Props extends StateProps, ActionsProps {
+
+   }
+
+
+
   
-    
-      
-      this.state = {
-        numAccount: '0',
-        RNE: '0',
-        nombre: '',
-        apellido: '',
-        lugarDeNacimiento: '',
-        genero: '',
-        nacionalidad: '',
-        direccion: '',
-        telefono: '',
-        tipoSangre: '',
-        fechaNacimiento: new Date()
-      }
-    }
-
-    clearFields = () => {
-      this.setState( {
-        numAccount: '0',
-        RNE: '0',
-        nombre: '',
-        apellido: '',
-        lugarDeNacimiento: '',
-        genero: '',
-        nacionalidad: '',
-        direccion: '',
-        telefono: '',
-        tipoSangre: '',
-        fechaNacimiento :new Date
-      })
-    }
-
-    handleChangeNC (event: any) {
-      const { target: { name, value } } = event;
-      console.log(name,  value)
-      this.setState({numAccount:value});
-    } 
+export class AddFicha extends Component<Props> {
+    // constructor(props: AddFicha.Props, context? : any) {
+    //   super(props, context);
+   
+    // }
 
 
     render () {
-      let {RNE, nacionalidad, nombre, apellido, direccion , telefono, genero, tipoSangre, lugarDeNacimiento, fechaNacimiento} = this.state;
+      let {RNE, nacionalidad, nombre, apellido, direccion , telefono, genero, tipoSangre, lugarDeNacimiento, fechaNacimiento} = this.props.ficha;
       return (
         <Card>
           <CardContent>
@@ -122,23 +78,22 @@ class AddFicha extends Component<AddFicha.Props> {
               <TextFieldPru
                 value={RNE}
                 label='numero de cuenta'
-                onChange={this.handleChangeNC}
               />
-              <TextFieldPru value={RNE} label='Identidad' onChange={this.handleChangeRNE} />
-              <TextFieldPru value={nombre} label='nombre' onChange={this.handleChangeNombre} />
-              <TextFieldPru value={apellido} label='apellido' onChange={this.handleChangeApellido} />
-              <TextFieldPru value={lugarDeNacimiento} label='lugar de nacimiento'  onChange={this.handleLugarDeNacimiento}/>
+              <TextFieldPru value={RNE} label='Identidad'  />
+              <TextFieldPru value={nombre} label='nombre' />
+              <TextFieldPru value={apellido} label='apellido'  />
+              <TextFieldPru value={lugarDeNacimiento} label='lugar de nacimiento' />
               <TextFieldPru
                 value={fechaNacimiento}
                 type='date'
                 label='fecha de nacimiento'
-                onChange={this.handleChangeFechaDeNacimiento}
+             
               />
-              <TextFieldPru value={nacionalidad} onChange={this.handleChangeNacionalidad} label='nacionalidad' />
-              <TextFieldPru value={direccion} onChange={this.handleChangeDireccion} label='direccion' />
-              <TextFieldPru value={telefono} onChange={this.handleChangeTelefono} label='telefono' />
-              <TextFieldPru value={genero} onChange={this.handleChangeGenero} label='genero' />
-              <TextFieldPru value={tipoSangre} onChange={this.handleChangeTipoDeSangre} label='tipoSangre' />
+              <TextFieldPru value={nacionalidad}  label='nacionalidad' />
+              <TextFieldPru value={direccion} label='direccion' />
+              <TextFieldPru value={telefono}  label='telefono' />
+              <TextFieldPru value={genero}  label='genero' />
+              <TextFieldPru value={tipoSangre} label='tipoSangre' />
             </Grid>
           </CardContent>
           <HealthData/>
@@ -150,21 +105,21 @@ class AddFicha extends Component<AddFicha.Props> {
   
     }
 }
-}
 
-function mapStateToProps(state: FichaState): Partial<AddFicha.Props> {
+
+function mapStateToProps({ficha}: RootState): StateProps {
   return {
-    fichas: state.fichas,
-    isFetching: state.isFetching,
-    errorMessage: state.errorMessage,
+    ficha: ficha.ficha,
+    isFetching: ficha.isFetching,
+    errorMessage: ficha.errorMessage,
   };
 }
  
 function mapActionsToProps(
   dispatch: Dispatch,
-): Pick<AddFicha.Props, 'actions'> {
+): ActionsProps {
   return {
-    actions: bindActionCreators(omit(FichaActions, 'Type'), dispatch),
+    createFicha: bindActionCreators(thunkCreateFicha, dispatch),
   };
 }
 

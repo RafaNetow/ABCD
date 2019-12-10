@@ -221,7 +221,7 @@ class AddEmployee extends Component<AddEmployee.Props> {
     this.setState({
       salaryType: event.target.value,
     });
-  }
+  } 
 
   containerStyle: React.CSSProperties = {
     textAlign: 'center',

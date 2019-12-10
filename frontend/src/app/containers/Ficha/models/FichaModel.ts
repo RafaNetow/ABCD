@@ -1,16 +1,17 @@
 
   
   export interface FichaModel {
-    numAccount: string,
+      numAccount: string,
       RNE: string,
       nombre: string,
       apellido: string,
-      lugarDeNacimiento: string,
+      lugarDeNacimiento: Date,
       genero: boolean,
       nacionalidad: string,
       direccion: string,
       telefono: string,
-      tipoSangre: string
+      tipoSangre: string,
+      fechaNacimiento: Date
   }
   
   export interface EmployeeRowModel {

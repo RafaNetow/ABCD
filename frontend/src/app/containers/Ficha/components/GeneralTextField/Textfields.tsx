@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid'
 type textProps = {
 	value:any,
 	label:string,
-	onChange:any
 	type? :any
 }
 
