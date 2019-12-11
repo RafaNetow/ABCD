@@ -1,5 +1,5 @@
 import { RouterState } from 'react-router-redux';
-import { FichaState } from 'app/containers/Ficha/reducer/state'
+import { FichaState } from 'app/containers/Ficha/store/state'
 
 export interface RootState {
   router: RouterState;

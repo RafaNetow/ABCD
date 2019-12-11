@@ -61,7 +61,7 @@ const styles = (theme: { spacing: { unit: any; }; }) => {
 
 
   
-export class AddFicha extends Component<Props> {
+  class AddFicha extends Component<Props> {
     // constructor(props: AddFicha.Props, context? : any) {
     //   super(props, context);
    
@@ -107,11 +107,12 @@ export class AddFicha extends Component<Props> {
 }
 
 
-function mapStateToProps({ficha}: RootState): StateProps {
+function mapStateToProps(state: RootState): StateProps {
+debugger
   return {
-    ficha: ficha.ficha,
-    isFetching: ficha.isFetching,
-    errorMessage: ficha.errorMessage,
+    ficha: state.ficha.ficha,
+    isFetching: state.ficha.isFetching,
+    errorMessage: state.ficha.errorMessage,
   };
 }
  
