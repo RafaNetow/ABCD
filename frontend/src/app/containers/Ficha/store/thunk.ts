@@ -2,8 +2,7 @@ import { FichaModel } from "../models/FichaModel";
 import { Dispatch } from "redux";
 import { addFichaRequest, addFichaFailure } from "./actions";
 import { push } from "connected-react-router";
-//import { toastNotify } from "app/utils";
-//import { FichaService } from "../services/ficha";
+
 
 
 

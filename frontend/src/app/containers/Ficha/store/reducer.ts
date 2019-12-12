@@ -1,21 +1,9 @@
 
 import { handleActions } from 'redux-actions';
 import { Type } from './types';
-import { FichaState } from './state';
+import { FichaState, FichaInitalState } from './state';
 
 
-
-
-
-
-
-//import { EmployeeState } from './state';
-
-export const FichaInitialState: FichaState = {
-  errorMessage: '',
-  isFetching: false,
-  ficha: {} as any ,
-};
 
 export const fichaReducer = handleActions<FichaState, any>(
   {
@@ -39,4 +27,4 @@ export const fichaReducer = handleActions<FichaState, any>(
         errorMessage: action.payload.message || '',
       }
     }
-},FichaInitialState)
+},FichaInitalState)

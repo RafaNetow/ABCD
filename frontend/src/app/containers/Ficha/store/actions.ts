@@ -56,12 +56,10 @@ import {Type} from './types'
     Type.UPDATE_FICHA_STATUS_FAILURE,
   );
 
-  // Async Actions are handled by thunk middleware
 
 
 
 
-export type FichaActions = Omit<typeof FichaActions, 'Type'>;
 export interface AddFichaPayload {
   FICHA: FichaModel;
 }

@@ -69,6 +69,7 @@ const styles = (theme: { spacing: { unit: any; }; }) => {
 
 
     render () {
+      console.log( " print props " + this.props.ficha);
       let {RNE, nacionalidad, nombre, apellido, direccion , telefono, genero, tipoSangre, lugarDeNacimiento, fechaNacimiento} = this.props.ficha;
       return (
         <Card>
