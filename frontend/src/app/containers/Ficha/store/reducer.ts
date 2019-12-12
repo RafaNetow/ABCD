@@ -1,26 +1,42 @@
+
 import { handleActions } from 'redux-actions';
-import { EmployeeActions } from '../actions';
+import { Type } from './types';
+import { FichaState } from './state';
+
+
+
+
+
+
+
 //import { EmployeeState } from './state';
 
-export const employeesInitialState: EmployeeState = {
+export const FichaInitialState: FichaState = {
   errorMessage: '',
   isFetching: false,
-  employees: [] as any,
+  ficha: {} as any ,
 };
 
-export const employeeReducer = handleActions<EmployeeState, any>(
+export const fichaReducer = handleActions<FichaState, any>(
   {
-    [EmployeeActions.Type.FETCH_EMPLOYEES_REQUEST]: state => {
+    [Type.ADD_FICHA_REQUEST]: state => {
       return {
         ...state,
         isFetching: true,
       };
     },
-    [EmployeeActions.Type.FETCH_EMPLOYEES_FAILURE]: (state, action) => {
+    [Type.ADD_FICHA_FAILURE]: (state, action) => {
       return {
         ...state,
         isFetching: false,
         errorMessage: action.payload.message || '',
       };
     },
-}
+    [Type.ADD_FICHA_SUCCESS]: (state, action) => {
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload.message || '',
+      }
+    }
+},FichaInitialState)
