@@ -50,7 +50,6 @@ const styles = (theme: { spacing: { unit: any; }; }) => {
   }
 
    interface ActionsProps {
-   // actions:FichaActions;
      createFicha:typeof thunkCreateFicha
    }
 
@@ -62,12 +61,6 @@ const styles = (theme: { spacing: { unit: any; }; }) => {
 
   
   class AddFicha extends Component<Props> {
-    // constructor(props: AddFicha.Props, context? : any) {
-    //   super(props, context);
-   
-    // }
-
-
     render () {
       console.log( " print props " + this.props.ficha);
       let {RNE, nacionalidad, nombre, apellido, direccion , telefono, genero, tipoSangre, lugarDeNacimiento, fechaNacimiento} = this.props.ficha;
@@ -109,6 +102,7 @@ const styles = (theme: { spacing: { unit: any; }; }) => {
 
 
 function mapStateToProps(state: RootState): StateProps {
+console.log(state);
 debugger
   return {
     ficha: state.ficha.ficha,
