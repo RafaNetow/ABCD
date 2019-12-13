@@ -1,21 +1,16 @@
 import React from 'react';
-import { Route, RouteComponentProps, Switch, Redirect } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 import { hot } from 'react-hot-loader';
 import './style.local.css';
-import { AuthService } from './services/auth';
-import App from './containers/App';
-import { Error } from './components';
-import { Callback } from './components/Callback';
 
-export interface Props {
-  authService: AuthService;
-}
+
+
 
 export interface State {
   showLoader: boolean;
 }
 
-export class Root extends React.Component<Props, State> {
+export class Root extends React.Component< State> {
   state = {
     showLoader: true,
   };
@@ -24,7 +19,7 @@ export class Root extends React.Component<Props, State> {
     setTimeout(() => this.setState({ showLoader: false }), 1000);
   }
   render() {
-    const { authService } = this.props;
+    
     // const { showLoader } = this.state;
 
     return (
@@ -43,7 +38,7 @@ export class Root extends React.Component<Props, State> {
             exact
             path='/logout'
             render={() => {
-              authService.logout();
+             
               return null;
             }}
           />
@@ -51,24 +46,16 @@ export class Root extends React.Component<Props, State> {
             exact
             path='/login'
             render={() => {
-              authService.login();
+            
               return null;
             }}
           />
           <Route
             path='/error'
-            render={(props: RouteComponentProps<void>) => (
-              <Error authService={authService} {...props} />
-            )}
+          
           />
           <Route
-            render={(props: RouteComponentProps<void>) => {
-              if (/access_token|id_token|error/.test(props.location.pathname)) {
-                return <Callback authService={authService} {...props} />;
-              } else {
-                return <App authService={authService} {...props} />;
-              }
-            }}
+  
           />
         </Switch>
       </div>

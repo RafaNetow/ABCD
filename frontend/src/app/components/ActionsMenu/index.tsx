@@ -5,13 +5,12 @@ import { Button } from '../Button';
 import { RouteComponentProps } from 'react-router';
 import ContextMenu from 'axui-contextmenu';
 import './style.css';
-import { EmployeeActions } from 'app/containers/Employee/actions';
+
 
 export namespace ActionsMenu {
   export interface Props extends RouteComponentProps<void> {
     employeeId: string;
     employeeStatus: boolean;
-    actions: EmployeeActions;
   }
 
   export interface State {
@@ -76,8 +75,7 @@ export class ActionsMenu extends React.Component<ActionsMenu.Props> {
       {
         label: this.props.employeeStatus ? 'Delete' : 'Unarchive',
         click: async () => {
-          await this.props.actions.deleteEmployee(+this.props.employeeId);
-          await this.props.actions.fetchEmployees();
+         
         },
       },
     ]);
